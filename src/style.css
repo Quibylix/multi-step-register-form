@@ -17,3 +17,80 @@ html {
     "Helvetica Neue",
     sans-serif;
 }
+
+:root {
+  --dark: #212936;
+  --almost-dark: #121826;
+  --pale-gray: #e5e7eb;
+  --cool-gray: #a1a1a9;
+  --slate-gray: #4d5562;
+  --purpley: #845eee;
+  --blue-purple: #652cd1;
+  --midnight-blue: #261e51;
+}
+
+#app {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100svh;
+  background: radial-gradient(
+      circle at 0rem 0rem,
+      var(--midnight-blue),
+      transparent 30%
+    ),
+    radial-gradient(circle at 100% 100%, var(--midnight-blue), transparent 30%);
+  background-color: var(--almost-dark);
+}
+
+.step-1-form {
+  background: var(--dark);
+  color: var(--pale-gray);
+  padding: 2rem;
+  box-sizing: border-box;
+  width: 85%;
+  max-width: 30rem;
+  margin: 0 auto;
+  border: 0.01rem solid var(--slate-gray);
+  border-radius: 1rem;
+}
+
+.step-1-form__heading {
+  margin-bottom: 2rem;
+  font-size: 1.25rem;
+}
+
+.step-1-form__label {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  margin-top: 1rem;
+  font-size: 0.875rem;
+  color: var(--cool-gray);
+}
+
+.step-1-form__input {
+  padding: 0.8rem;
+  font-size: 0.875rem;
+  background: transparent;
+  border-radius: 0.7rem;
+  outline: none;
+  border: 0.13rem solid var(--cool-gray);
+  color: var(--pale-gray);
+}
+
+.step-1-form__input:focus {
+  border: 0.13rem solid var(--purpley);
+}
+
+.step-1-form__button {
+  background: linear-gradient(to bottom, var(--purpley), var(--blue-purple));
+  color: var(--pale-gray);
+  padding: 0.75rem 2.2rem;
+  border-radius: 2rem;
+  border: none;
+  font-weight: bold;
+  display: block;
+  margin: 1.5rem auto 0;
+}

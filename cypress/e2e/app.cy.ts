@@ -4,4 +4,12 @@ describe("general app test", () => {
 
     cy.title().should("eq", "Multi-step Register Form");
   });
+
+  it("should display a form with inputs for the name and the email", () => {
+    cy.visit("/");
+
+    cy.get("form").should("exist");
+    cy.get("input[name=name]").should("exist");
+    cy.get("input[name=email]").should("exist");
+  });
 });

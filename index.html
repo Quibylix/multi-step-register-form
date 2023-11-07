@@ -8,7 +8,30 @@
   </head>
   <body>
     <div id="app">
-      <h1>Multi-step Register Form</h1>
+      <form class="step-1-form">
+        <h2 class="step-1-form__heading">Register</h2>
+        <label class="step-1-form__label">
+          Name
+          <input
+            class="step-1-form__input"
+            name="name"
+            type="text"
+            placeholder="John Doe"
+            required
+          />
+        </label>
+        <label class="step-1-form__label">
+          Email
+          <input
+            class="step-1-form__input"
+            name="email"
+            type="email"
+            placeholder="example@gmail.com"
+            required
+          />
+        </label>
+        <button class="step-1-form__button" type="submit">Continue</button>
+      </form>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
