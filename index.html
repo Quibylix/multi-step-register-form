@@ -8,7 +8,7 @@
   </head>
   <body>
     <div id="app">
-      <form class="step-1-form">
+      <form class="step-1-form" data-cy="step-1-form">
         <h2 class="step-1-form__heading">Register</h2>
         <label class="step-1-form__label">
           Name
@@ -32,6 +32,7 @@
         </label>
         <button class="step-1-form__button" type="submit">Continue</button>
       </form>
+      <form class="step-2-form hidden" data-cy="step-2-form"></form>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

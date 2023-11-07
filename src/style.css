@@ -44,6 +44,10 @@ html {
   background-color: var(--almost-dark);
 }
 
+.hidden {
+  display: none;
+}
+
 .step-1-form {
   background: var(--dark);
   color: var(--pale-gray);
