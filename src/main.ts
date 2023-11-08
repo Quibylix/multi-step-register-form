@@ -5,9 +5,10 @@ const $$ = document.querySelectorAll.bind(document);
 
 const formStep1 = $(".step-1-form") as HTMLFormElement;
 const formStep2 = $(".step-2-form") as HTMLFormElement;
+const formStep3 = $(".step-3-form") as HTMLFormElement;
 const labelsStep2 = $$(".step-2-form__label") as NodeListOf<HTMLLabelElement>;
 
-changeStep(1);
+changeStep(3);
 
 formStep1.addEventListener("submit", (e: SubmitEvent) => {
   e.preventDefault();
@@ -24,7 +25,15 @@ labelsStep2.forEach(label => {
 formStep2.addEventListener("submit", e => {
   e.preventDefault();
 
+  changeStep(3);
+});
+
+formStep3.addEventListener("submit", e => {
+  e.preventDefault();
+
   alert("Form submitted!");
+
+  changeStep(1);
 });
 
 function changeStep(step: number) {
@@ -32,10 +41,17 @@ function changeStep(step: number) {
     case 1:
       formStep1.classList.remove("hidden");
       formStep2.classList.add("hidden");
+      formStep3.classList.add("hidden");
       break;
     case 2:
       formStep1.classList.add("hidden");
       formStep2.classList.remove("hidden");
+      formStep3.classList.add("hidden");
+      break;
+    case 3:
+      formStep1.classList.add("hidden");
+      formStep2.classList.add("hidden");
+      formStep3.classList.remove("hidden");
       break;
   }
 }
