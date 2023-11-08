@@ -133,4 +133,27 @@ describe("general app test", () => {
 
     cy.get("form[data-cy='step-3-form'").submit();
   });
+
+  it("should display the current step in the stepper", () => {
+    cy.visit("/");
+
+    cy.get("span[data-cy='stepper__value']").should("have.text", "1");
+
+    cy.get("input[name=name]").type("John Doe");
+    cy.get("input[name=email]").type("example@gmail.com");
+
+    cy.get("form[data-cy='step-1-form'").submit();
+
+    cy.get("span[data-cy='stepper__value']").should("have.text", "2");
+
+    cy.get("label[data-cy='step-2-form__label']").first().click();
+
+    cy.get("form[data-cy='step-2-form'").submit();
+
+    cy.get("span[data-cy='stepper__value']").should("have.text", "3");
+
+    cy.get("form[data-cy='step-3-form'").submit();
+
+    cy.get("span[data-cy='stepper__value']").should("have.text", "1");
+  });
 });

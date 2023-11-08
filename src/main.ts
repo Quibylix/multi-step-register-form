@@ -11,6 +11,8 @@ const labelsStep2 = $$(".step-2-form__label") as NodeListOf<HTMLLabelElement>;
 const nameResult = $(".step-3-form__name") as HTMLSpanElement;
 const emailResult = $(".step-3-form__email") as HTMLSpanElement;
 const topicsResult = $(".step-3-form__list") as HTMLUListElement;
+const stepValue = $(".stepper__step") as HTMLSpanElement;
+const stepCircles = $$(".stepper__circle") as NodeListOf<HTMLDivElement>;
 
 const userData = {
   name: "",
@@ -86,16 +88,59 @@ function changeStep(step: number) {
       formStep1.classList.remove("hidden");
       formStep2.classList.add("hidden");
       formStep3.classList.add("hidden");
+
+      stepValue.textContent = "1";
+
+      stepCircles[0].classList.add(
+        "stepper__circle--active",
+        "stepper__circle--current",
+      );
+      stepCircles[1].classList.remove(
+        "stepper__circle--active",
+        "stepper__circle--current",
+      );
+      stepCircles[2].classList.remove(
+        "stepper__circle--active",
+        "stepper__circle--current",
+      );
       break;
     case 2:
       formStep1.classList.add("hidden");
       formStep2.classList.remove("hidden");
       formStep3.classList.add("hidden");
+
+      stepValue.textContent = "2";
+
+      stepCircles[0].classList.add("stepper__circle--active");
+      stepCircles[0].classList.remove("stepper__circle--current");
+
+      stepCircles[1].classList.add(
+        "stepper__circle--active",
+        "stepper__circle--current",
+      );
+
+      stepCircles[2].classList.remove(
+        "stepper__circle--active",
+        "stepper__circle--current",
+      );
       break;
     case 3:
       formStep1.classList.add("hidden");
       formStep2.classList.add("hidden");
       formStep3.classList.remove("hidden");
+
+      stepValue.textContent = "3";
+
+      stepCircles[0].classList.add("stepper__circle--active");
+      stepCircles[0].classList.remove("stepper__circle--current");
+
+      stepCircles[1].classList.add("stepper__circle--active");
+      stepCircles[1].classList.remove("stepper__circle--current");
+
+      stepCircles[2].classList.add(
+        "stepper__circle--active",
+        "stepper__circle--current",
+      );
       break;
   }
 }

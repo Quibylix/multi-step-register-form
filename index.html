@@ -88,6 +88,19 @@
         </ul>
         <button class="step-3-form__button" type="submit">Confirm</button>
       </form>
+      <div class="stepper">
+        <p class="stepper__current-step">
+          Step <span class="stepper__step" data-cy="stepper__value">1</span> of
+          3
+        </p>
+        <div class="stepper__circles">
+          <div
+            class="stepper__circle stepper__circle--active stepper__circle--current"
+          ></div>
+          <div class="stepper__circle"></div>
+          <div class="stepper__circle"></div>
+        </div>
+      </div>
     </div>
     <script type="module" src="/src/main.ts"></script>
   </body>

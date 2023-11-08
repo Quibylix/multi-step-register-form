@@ -27,6 +27,7 @@ html {
   --purpley: #845eee;
   --blue-purple: #652cd1;
   --midnight-blue: #261e51;
+  --twilight: #342d61;
 }
 
 #app {
@@ -147,4 +148,47 @@ html {
   list-style: disc;
   margin-left: 1.5rem;
   margin-top: 0.5rem;
+}
+
+.stepper {
+  margin-top: 1rem;
+  color: var(--pale-gray);
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.stepper__current-step {
+  position: absolute;
+  width: max-content;
+  transform: translateX(-100%);
+  padding-right: 1.4rem;
+  vertical-align: middle;
+  left: 0;
+  color: var(--cool-gray);
+  font-size: 0.875rem;
+}
+
+.stepper__circles {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.stepper__circle {
+  width: 0.7rem;
+  height: 0.7rem;
+  border-radius: 50%;
+  background: var(--slate-gray);
+  transition:
+    background-color 0.4s ease-in-out,
+    box-shadow 0.4s ease-in-out;
+}
+
+.stepper__circle--active {
+  background: var(--blue-purple);
+}
+
+.stepper__circle--current {
+  box-shadow: 0 0 0 0.4rem var(--twilight);
 }
