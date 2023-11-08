@@ -24,4 +24,13 @@ describe("general app test", () => {
     cy.get("form[data-cy='step-1-form'").should("have.css", "display", "none");
     cy.get("form[data-cy='step-2-form'").should("have.css", "display", "block");
   });
+
+  it("should display some options for the user to select in the second form", () => {
+    cy.visit("/");
+
+    cy.get("form[data-cy='step-1-form'").submit();
+
+    cy.get("form[data-cy='step-2-form'").should("exist");
+    cy.get("label[data-cy='step-2-form__label']").should("have.length", 3);
+  });
 });
