@@ -75,7 +75,7 @@ formStep2.addEventListener("submit", e => {
 formStep3.addEventListener("submit", e => {
   e.preventDefault();
 
-  alert("Form submitted!");
+  alert("✅ Success");
 
   changeStep(1);
 });

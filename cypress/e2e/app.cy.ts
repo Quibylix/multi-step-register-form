@@ -112,4 +112,25 @@ describe("general app test", () => {
       "Software Development",
     );
   });
+
+  it("should display an alert with the text '✅ Success' when the third form is submitted", () => {
+    cy.visit("/");
+
+    cy.get("input[name=name]").type("John Doe");
+    cy.get("input[name=email]").type("example@gmail.com");
+
+    cy.get("form[data-cy='step-1-form'").submit();
+
+    cy.get("label[data-cy='step-2-form__label']").first().click();
+
+    cy.get("form[data-cy='step-2-form'").submit();
+
+    cy.get("form[data-cy='step-3-form'").should("exist");
+
+    cy.on("window:alert", str => {
+      expect(str).to.equal("✅ Success");
+    });
+
+    cy.get("form[data-cy='step-3-form'").submit();
+  });
 });
