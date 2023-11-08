@@ -33,3 +33,23 @@ export function validateEmail(email: unknown) {
 
   return null;
 }
+
+export function validateTopics(topics: unknown) {
+  if (!topics) {
+    return "Please select at least one topic!";
+  }
+
+  if (!Array.isArray(topics)) {
+    return "Please select at least one topic!";
+  }
+
+  if (!topics.length) {
+    return "Please select at least one topic!";
+  }
+
+  if (!topics.every(topic => typeof topic === "string")) {
+    return "Please select at least one topic!";
+  }
+
+  return null;
+}

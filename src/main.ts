@@ -1,5 +1,5 @@
 import "./style.css";
-import { validateEmail, validateName } from "./validators";
+import { validateEmail, validateName, validateTopics } from "./validators";
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -8,11 +8,14 @@ const formStep1 = $(".step-1-form") as HTMLFormElement;
 const formStep2 = $(".step-2-form") as HTMLFormElement;
 const formStep3 = $(".step-3-form") as HTMLFormElement;
 const labelsStep2 = $$(".step-2-form__label") as NodeListOf<HTMLLabelElement>;
+const nameResult = $(".step-3-form__name") as HTMLSpanElement;
+const emailResult = $(".step-3-form__email") as HTMLSpanElement;
+const topicsResult = $(".step-3-form__list") as HTMLUListElement;
 
 const userData = {
   name: "",
   email: "",
-  options: [] as string[],
+  topics: [] as string[],
 };
 
 changeStep(1);
@@ -46,6 +49,25 @@ labelsStep2.forEach(label => {
 
 formStep2.addEventListener("submit", e => {
   e.preventDefault();
+
+  const formData = new FormData(formStep2);
+
+  const topics = formData.getAll("topic");
+
+  const topicsError = validateTopics(topics);
+
+  if (topicsError) {
+    alert(topicsError);
+    return;
+  }
+
+  userData.topics = topics as string[];
+
+  nameResult.textContent = userData.name;
+  emailResult.textContent = userData.email;
+  topicsResult.innerHTML = userData.topics
+    .map(topic => `<li>${topic}</li>`)
+    .join("");
 
   changeStep(3);
 });
