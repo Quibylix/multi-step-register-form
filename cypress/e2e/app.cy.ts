@@ -16,13 +16,35 @@ describe("general app test", () => {
   it("should display the second form when the first form is submitted", () => {
     cy.visit("/");
 
-    cy.get("input[name=name]").should("exist");
-    cy.get("input[name=email]").should("exist");
+    cy.get("input[name=name]").should("exist").type("John Doe");
+    cy.get("input[name=email]").should("exist").type("example@gmail.com");
 
     cy.get("form[data-cy='step-1-form'").submit();
 
     cy.get("form[data-cy='step-1-form'").should("have.css", "display", "none");
     cy.get("form[data-cy='step-2-form'").should("have.css", "display", "block");
+  });
+
+  it("should display an error message when the first form is submitted with empty fields", () => {
+    cy.visit("/");
+
+    cy.on("window:alert", str => {
+      expect(str).to.equal("Please fill in all the fields!");
+    });
+
+    cy.get("form[data-cy='step-1-form']").submit();
+  });
+
+  it("should display an error message when the first form is submitted with an invalid email", () => {
+    cy.visit("/");
+
+    cy.on("window:alert", str => {
+      expect(str).to.equal("Please provide a valid email!");
+    });
+
+    cy.get("input[name=name]").type("John Doe");
+    cy.get("input[name=email]").type("example@com");
+    cy.get("form[data-cy='step-1-form']").submit();
   });
 
   it("should display some options for the user to select in the second form", () => {

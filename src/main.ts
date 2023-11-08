@@ -1,4 +1,5 @@
 import "./style.css";
+import { validateEmail, validateName } from "./validators";
 
 const $ = document.querySelector.bind(document);
 const $$ = document.querySelectorAll.bind(document);
@@ -8,10 +9,31 @@ const formStep2 = $(".step-2-form") as HTMLFormElement;
 const formStep3 = $(".step-3-form") as HTMLFormElement;
 const labelsStep2 = $$(".step-2-form__label") as NodeListOf<HTMLLabelElement>;
 
-changeStep(3);
+const userData = {
+  name: "",
+  email: "",
+  options: [] as string[],
+};
+
+changeStep(1);
 
 formStep1.addEventListener("submit", (e: SubmitEvent) => {
   e.preventDefault();
+
+  const formData = new FormData(formStep1);
+
+  const nameError = validateName(formData.get("name"));
+  const emailError = validateEmail(formData.get("email"));
+
+  nameError && alert(nameError);
+  emailError && alert(emailError);
+
+  if (nameError || emailError) {
+    return;
+  }
+
+  userData.name = formData.get("name") as string;
+  userData.email = formData.get("email") as string;
 
   changeStep(2);
 });
