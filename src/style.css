@@ -103,6 +103,14 @@ html {
   font-weight: bold;
   display: block;
   margin: 1.5rem auto 0;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+}
+
+.step-1-form__button:hover,
+.step-2-form__button:hover,
+.step-3-form__button:hover {
+  transform: scale(1.08);
 }
 
 .step-2-form__label {
